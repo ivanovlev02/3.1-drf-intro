@@ -1,0 +1,45 @@
+# примеры API-запросов
+
+@baseUrl = http://10.10.13.213:8000/api
+
+# получаем датчики
+GET {{baseUrl}}/sensors/
+Content-Type: application/json
+
+###
+
+# создаем датчик
+POST {{baseUrl}}/sensors/
+Content-Type: application/json
+
+{
+  "name_sensor": "BMP280",
+  "description_sensor": "Датчик атмосферного давления на балконе"
+}
+
+###
+
+# обновляем датчик
+PATCH {{baseUrl}}/sensors/2/
+Content-Type: application/json
+
+{
+  "description_sensor": "Отвез датчик на дачу"
+}
+
+###
+
+# добавляем показания
+POST {{baseUrl}}/measurements/
+Content-Type: application/json
+
+{
+  "sensor": 1,
+  "temperature": 24.9
+}
+
+###
+
+# получаем информацию с датчика
+GET {{baseUrl}}/sensors/3/
+Content-Type: application/json
